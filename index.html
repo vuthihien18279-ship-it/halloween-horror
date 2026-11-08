@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HALLOWEEN NIGHT 👻</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050000;
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle, #350000 0%, #100000 45%, #000 100%);
+    z-index: -1;
+}
+
+.container {
+    padding: 25px;
+}
+
+h1 {
+    color: #ff1616;
+    font-size: clamp(35px, 7vw, 65px);
+    text-shadow: 0 0 20px red;
+    animation: flicker 2s infinite;
+}
+
+p {
+    color: #aaa;
+    margin: 25px 0;
+    font-size: 18px;
+}
+
+button {
+    padding: 16px 35px;
+    background: #8b0000;
+    color: white;
+    border: 1px solid red;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #f00;
+    transition: .3s;
+}
+
+button:hover {
+    background: red;
+    transform: scale(1.1);
+}
+
+#ghost {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#ghost img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#message {
+    position: absolute;
+    bottom: 30px;
+    color: red;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 0 0 15px red;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 60%, 100% { opacity: 1; }
+    20%, 21%, 61% { opacity: .4; }
+}
+
+#ghost.show {
+    animation: appear .25s ease-out;
+}
+
+@keyframes appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="home">
+    <h1>🎃 HALLOWEEN NIGHT</h1>
+    <p>Are you ready to enter the haunted house?</p>
+    <button onclick="startHorror()">ENTER IF YOU DARE 👻</button>
+</div>
+
+<div id="ghost">
+    <img
+      src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=1200"
+      alt="Haunted horror scene"
+    >
+    <div id="message">WELCOME TO HELL 💀</div>
+</div>
+
+<script>
+function startHorror() {
+    document.getElementById("home").style.display = "none";
+
+    setTimeout(() => {
+        const ghost = document.getElementById("ghost");
+        ghost.style.display = "flex";
+        ghost.classList.add("show");
+    }, 2500);
+}
+</script>
+
+</body>
+</html>
